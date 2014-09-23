@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.justanymsg</groupId>
-	<artifactId>MEL</artifactId>
+	<artifactId>jam-mel</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Message Exchange Layer</name>
@@ -15,6 +15,10 @@
 		<com.sun.jersey.version>1.18.1</com.sun.jersey.version>
 		<org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
 		<org.slf4j.version>1.7.7</org.slf4j.version>
+		<javax.servlet.servlet-api>2.5</javax.servlet.servlet-api>
+		<io.fastjson.boon.version>0.11</io.fastjson.boon.version>
+		<junit.version>3.8.1</junit.version>
+		<commons-lang.version>2.6</commons-lang.version>
 	</properties>
 
 	<repositories>
@@ -42,37 +46,33 @@
 			<version>${com.sun.jersey.version}</version>
 		</dependency>
 
-		<!-- Jackson -->
+		<!-- Servlet API -->
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-jaxrs</artifactId>
-			<version>${org.codehaus.jackson.version}</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${javax.servlet.servlet-api}</version>
+			<scope>provided</scope>
 		</dependency>
 
-		<!-- <dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.4.2</version>
-		</dependency> -->
-
+		<!-- Boon -->
 		<dependency>
 			<groupId>io.fastjson</groupId>
 			<artifactId>boon</artifactId>
-			<version>0.11</version>
+			<version>${io.fastjson.boon.version}</version>
 		</dependency>
 
-
+		<!-- Commons Lang -->
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-xc</artifactId>
-			<version>${org.codehaus.jackson.version}</version>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>${commons-lang.version}</version>
 		</dependency>
 
 		<!-- Junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 

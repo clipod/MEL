@@ -11,7 +11,10 @@ import javax.ws.rs.core.MediaType;
 
 import org.springframework.stereotype.Component;
 
+import com.justanymsg.mel.execptions.MELException;
+import com.justanymsg.mel.execptions.faults.BadRequest;
 import com.justanymsg.mel.objectMappers.Account;
+import com.justanymsg.mel.utils.FaultUtils;
 
 @Component("accountsResource")
 @Path("v1/accounts")
@@ -22,7 +25,7 @@ public class AccountsResource {
 	@POST
 	public Account createAccount(Account account) {
 		System.out.println("Enteirng ------------------------------"+ account.getFirstName());
-		return account;
+		 throw new MELException(FaultUtils.createfault(new BadRequest(), "test exception message", 100));
 	}
 	
 	@GET
