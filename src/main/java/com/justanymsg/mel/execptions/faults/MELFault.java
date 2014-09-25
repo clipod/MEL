@@ -2,8 +2,11 @@ package com.justanymsg.mel.execptions.faults;
 
 import java.io.Serializable;
 
+import org.boon.json.annotations.JsonIgnore;
+
 public class MELFault implements Serializable, Cloneable {
 
+	@JsonIgnore
 	private static final long serialVersionUID = 1L;
 	protected String referenceId;
 	protected String message;

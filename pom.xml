@@ -19,6 +19,9 @@
 		<io.fastjson.boon.version>0.11</io.fastjson.boon.version>
 		<junit.version>3.8.1</junit.version>
 		<commons-lang.version>2.6</commons-lang.version>
+		<org.springframework.data.mongodb.version>1.6.0.RELEASE</org.springframework.data.mongodb.version>
+		<org.mongodb.driver.version>2.12.3</org.mongodb.driver.version>
+		<cglib.version>3.1</cglib.version>
 	</properties>
 
 	<repositories>
@@ -126,6 +129,27 @@
 			<version>${org.springframework.version}</version>
 		</dependency>
 
+		<!-- mongodb java driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>${org.mongodb.driver.version}</version>
+		</dependency>
+
+		<!-- Spring data mongodb -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>${org.springframework.data.mongodb.version}</version>
+		</dependency>
+
+		<!-- Mongo DB -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
+		</dependency>
+
 		<!-- Jersey Spring -->
 		<dependency>
 			<groupId>com.sun.jersey.contribs</groupId>
@@ -184,9 +208,53 @@
 					<path>/</path>
 					<port>9090</port>
 					<systemProperties>
-						<mel.home>${basedir}/target/properties/LOCAL</mel.home>
+						<mel.home>${basedir}/target/properties/local</mel.home>
 					</systemProperties>
 				</configuration>
+			</plugin>
+			<!-- Agnostic WAR Assembly -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.2-beta-5</version>
+				<configuration>
+					<descriptors>
+						<descriptor>assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id> <!-- this is used for inheritance merges -->
+						<phase>package</phase> <!-- bind to the packaging phase -->
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- Maven copy resources -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/properties</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/properties</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
