@@ -2,7 +2,7 @@ package com.justanymsg.mel.objectMappers;
 
 public enum MessageType {
 	
-	TEXT("TEXT"), PHOTO("PHOTO"), VIDEO("VIDEO");
+	TEXT("TEXT"), PHOTO("PHOTO"), VIDEO("VIDEO"), AUDIO("AUDIO");
 
 	private String messageType;
 

@@ -18,4 +18,9 @@
 			value="file:///#{systemProperties['mel.home'] != null ? systemProperties['mel.home'] + '/mel.secrets.properties' :
 			  systemProperties['user.home'] + '/config/bsl2.secrets.properties'}" />
 	</bean>
+		<bean id="applicationDomain"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location"
+			value="file:///#{systemProperties['mel.home']?:systemProperties['user.home'] + '/config'}/mel.domain.properties" />
+	</bean>
 </beans>

@@ -49,6 +49,12 @@
 			<version>${com.sun.jersey.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-multipart</artifactId>
+			<version>${com.sun.jersey.version}</version>
+		</dependency>
+
 		<!-- Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

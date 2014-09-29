@@ -5,6 +5,8 @@ import java.util.List;
 public class Contact {
 
 	private String accountId;
+	//Had to add this field because searching of users and adding them will create spam.
+	private Boolean isVerified;
 	private List<Message> messages;
 	public String getAccountId() {
 		return accountId;
@@ -17,6 +19,12 @@ public class Contact {
 	}
 	public void setMessages(List<Message> messages) {
 		this.messages = messages;
+	}
+	public Boolean getIsVerified() {
+		return isVerified;
+	}
+	public void setIsVerified(Boolean isVerified) {
+		this.isVerified = isVerified;
 	}
 	
 }
